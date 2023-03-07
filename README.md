@@ -1,6 +1,25 @@
-# Getting Started with Create React App and Redux
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+
+## Project Overview:
+
+For this project, you will build an application for Reddit using everything you’ve learned, including React and Redux. Reddit is a website where people share links to articles, media and other things on the web. 
+The Reddit API provides data which you will integrate into your application. 
+
+**The application will allow users to view and search posts and comments provided by the API.**
+
+
+## Project Features:
+
+- A feed of reddit posts, complete with previews and comments
+- A sidebar of subreddits
+- A search function for comments and posts
+
+
+## Design Principles:
+
+This app is intended to serve as a sleek, visually appealing interface for browsing reddit. It's relatively minimalist in its aesthetic, and uses a darkened visual theme to be easier on the eyes than the traditional white page/dark text styling. 
+
+
 
 ## Available Scripts
 

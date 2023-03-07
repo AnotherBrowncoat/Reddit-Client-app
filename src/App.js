@@ -4,8 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import logo from './logo.svg';
 
 // my elements
-import { Counter } from './features/counter/Counter';
-import Home from './features/Home/Home';
+import Home from './pages/Home/Home.js';
 
 // styling
 import './App.css';
@@ -17,7 +16,7 @@ function App() {
       <div className="App">
 
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Hello there</h2>
         </header>
 
         <main className="App-main">

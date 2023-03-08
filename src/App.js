@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import logo from './logo.svg';
 
 // my elements
-import Home from './pages/Home/Home.js';
+import Feed from './pages/Feed/Feed.js';
 
 // styling
 import './App.css';
@@ -21,7 +21,7 @@ function App() {
 
         <main className="App-main">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Feed />} />
           </Routes>
         </main>
       </div>

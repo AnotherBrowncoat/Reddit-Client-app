@@ -1,0 +1,21 @@
+.feedCard {
+    background-color: #585858;
+    border: 2px solid #6a6a6a;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px 0px;
+}
+
+.postThumbnail {
+    max-height: 150px;
+    max-width: 150px;
+    background-color: #fff;
+    border: 2px solid #6a6a6a;
+    border-radius: 3px;
+}
+
+.thumbnailImage {
+    object-fit: cover;
+    height: 150px;
+    max-width: 150px;
+}

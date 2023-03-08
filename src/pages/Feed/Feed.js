@@ -16,14 +16,18 @@ import "./Feed.css";
 
 export const Feed = () => {
     const dispatch = useDispatch();
+    // selectors:
     const children = useSelector(getChildren);
     const feedLoading = useSelector(isLoadingFeed);
     const feedLoadingFailed = useSelector(failedLoadingFeed);
+    // used parameters:
     const { subReddit } = useParams();
 
     useEffect(() => {
+        // returns the viewer to the top of the new page:
         window.scrollTo(0, 0);
         dispatch(getFeed(subReddit));
+    // dependency array; will only execute if dispatch or subreddit change:
     }, [dispatch, subReddit]);
 
     if(feedLoading) {
@@ -33,7 +37,8 @@ export const Feed = () => {
     if(feedLoadingFailed) {
         return <p>Failed</p>
     };
-
+    
+    // valid subreddits will have a "children" property containing their posts and comments etc:
     if(children !== undefined) {
         return (
             <div className="feed">

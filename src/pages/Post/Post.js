@@ -21,13 +21,13 @@ export const Post = () => {
     const postLoading = useSelector(isLoadingPost);
     const postLoadingFailed = useSelector(failedLoadingPost);
 
-    /*if(postLoading) {
+    if(postLoading) {
         return <p>Loading</p>;
     };
 
     if(postLoadingFailed) {
         return <p>Failed</p>
-    };*/
+    };
 
     return (
         <div>This is a post</div>

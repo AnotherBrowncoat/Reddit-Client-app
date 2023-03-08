@@ -8,6 +8,7 @@ import { getFeed,
     getChildren,
     isLoadingFeed,
     failedLoadingFeed } from "./feedSlice.js";
+import { FeedCard } from "../../components/feedCard/feedCard.js";
 
 // styling imports:
 import "./Feed.css";
@@ -36,13 +37,19 @@ export const Feed = () => {
     if(children !== undefined) {
         return (
             <div className="feed">
-                <h1>Howdy</h1>
-                
+                <h1>Loaded</h1>
+                {children.map((post, index) => (
+                    <FeedCard data={post.data} key={index} />
+                ))};
             </div>
-        );    
+        )    
     };
 };
 
 export default Feed;
 
-// {children.map((post, index) => )}
+/* 
+
+                
+
+*/

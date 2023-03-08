@@ -37,3 +37,15 @@
     transform: translateY(0px);
   }
 }
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #ffffff;
+}
+
+a:visited {
+  color: #e9e9e9;
+}

@@ -39,14 +39,14 @@ export const postSlice = createSlice({
             state.isLoadingPost = false;
             state.failedLoadingPost = false;
             // when fulfilled, we need to be served the post itself and the comments chain below:
-            state.post.postBody = action.payload.postBody;
-            state.post.comments = action.payload.comments;
+            state.post.postBody = action.payload[0].data;
+            state.post.comments = action.payload[1].data;
         })
     }
 });
 
 export const getComments = state => state.post.post.comments;
-export const getPostBody = state => state.post.postBody;
+export const getPostBody = state => state.post.post.postBody;
 export const isLoadingPost = state => state.post.isLoadingPost;
 export const failedLoadingPost = state => state.post.failedLoadingPost;
 

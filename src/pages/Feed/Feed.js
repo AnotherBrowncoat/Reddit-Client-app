@@ -26,15 +26,16 @@ export const Feed = () => {
     const children = useSelector(getChildren);
     const feedLoading = useSelector(isLoadingFeed);
     const feedLoadingFailed = useSelector(failedLoadingFeed);
-    // used parameters:
-    const { subReddit } = useParams();
+    // uses this part of the URL path (as defined by the <Feed /> Route path) when used in functions:
+    const { subreddit } = useParams();
 
     useEffect(() => {
         // returns the viewer to the top of the new page:
         window.scrollTo(0, 0);
-        dispatch(getFeed(subReddit));
+        // loads the feed of the current subreddit, as defined by the <Feed /> Route path:
+        dispatch(getFeed(subreddit));
     // dependency array; will only execute if dispatch or subreddit change:
-    }, [dispatch, subReddit]);
+    }, [dispatch, subreddit]);
 
     if(feedLoading) {
         return <p>Loading placeholder</p>;
@@ -52,7 +53,7 @@ export const Feed = () => {
             <div className="feed">
                 
                 {/* displays the name of the currently selected subreddit, or the default of Popular if none */}
-                <h2>{subReddit ? `Subreddit: ${subReddit}` : "Popular"}</h2>
+                <h2>{subreddit ? `Subreddit: ${subreddit}` : "Popular"}</h2>
 
                 {/* creates a FeedCard element for each post with a unique index */}
                 {children.map((post, index) => (
@@ -65,9 +66,3 @@ export const Feed = () => {
 };
 
 export default Feed;
-
-/* 
-
-                
-
-*/

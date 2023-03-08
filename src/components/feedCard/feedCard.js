@@ -40,21 +40,32 @@ export const FeedCard = (post, key) => {
                 {/* Posted by/in details: */}
                 <Link to={"/r/" + post.data.subreddit}>
                     <div className="postOrigin">
-                        <p>Posted in {post.data.subreddit_name_prefixed} by {post.data.author} at {postedWhen}</p>
+                        <p>Posted in <strong>{post.data.subreddit_name_prefixed}</strong> by {`u\\${post.data.author}`} on {postedWhen}</p>
                     </div>
                 </Link>
 
                 <Link to={post.data.permalink}>
-                    {/* Post title and comments total: */}
+                    {/* Post title, with NSFW tag if flagged as such: */}
                     <div className="postHeading">
-                        <h3>{post.data.title}</h3>
+                        <h3>
+                            {post.data.title}{post.data.thumbnail === "nsfw" ? <span className="nsfw">nsfw</span> : ""}
+                        </h3>
                         <p>{post.data.num_comments} Comments</p>
                     </div>
 
                     {/* Post thumbnail: */}
                     <div className="postThumbnail">
-                        <img className="thumbnailImage" src={postThumbnail} />
+                        <img className="thumbnailImage" src={postThumbnail} alt="Post Thumbnail"/>
                     </div>
+
+                    {/* if post is a link, it should render the link: */}
+                    {post.data.post_hint === "link" ?
+                        <p className="postLink">
+                            <a href={post.data.url} target="blank">
+                                {post.data.url}
+                            </a>
+                        </p>
+                    : ""}
                     
                     {/* Post score: */}
                     <div className="postScore">

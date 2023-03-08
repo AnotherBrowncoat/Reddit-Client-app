@@ -40,7 +40,7 @@ export const FeedCard = (post, key) => {
                 {/* Posted by/in details: */}
                 <Link to={"/r/" + post.data.subreddit}>
                     <div className="postOrigin">
-                        <p>Posted in <strong>{post.data.subreddit_name_prefixed}</strong> by {`u\\${post.data.author}`} on {postedWhen}</p>
+                        <p>Posted in <strong>{post.data.subreddit_name_prefixed}</strong> by {`u/${post.data.author}`} on {postedWhen}</p>
                     </div>
                 </Link>
 

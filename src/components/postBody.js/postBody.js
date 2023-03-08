@@ -40,7 +40,7 @@ export const PostBody = (body) => {
                 {/* Posted by/in details: */}
                 <Link to={"/r/" + body.data.subreddit}>
                     <div className="postOrigin">
-                        <p>Posted in <strong>{body.data.subreddit_name_prefixed}</strong> by {`u\\${body.data.author}`} on {postedWhen}</p>
+                        <p>Posted in <strong>{body.data.subreddit_name_prefixed}</strong> by {`u/${body.data.author}`} on {postedWhen}</p>
                     </div>
                 </Link>
 
@@ -53,7 +53,16 @@ export const PostBody = (body) => {
                         <p>{body.data.num_comments} Comments</p>
                     </div>
 
-                    {/* if post is a link, it should render the link: */}
+                    {/* if post is just text, it should render as text; if not, render nothing: */}
+                    {body.data.selftext !== "" ?
+                        <p className="markDownText">
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                {body.data.selftext}
+                            </ReactMarkdown>
+                        </p> : ""}
+
+
+                    {/* if post is a link, it should render the link; if not, render nothing: */}
                     {body.data.post_hint === "link" ?
                         <p className="postLink">
                             <a href={body.data.url} target="blank">
@@ -61,7 +70,20 @@ export const PostBody = (body) => {
                             </a>
                         </p>
                     : ""}
+
+                    {/* if post is a video, it should be playable and have controls; if not, render nothing: */}
+                    {body.data.is_video ?
+                        <video controls >
+                            <source src={body.data.media.reddit_video.fallback_url} type={"video/mp4"}/>
+                        </video> : ""}
                     
+                    
+                    {/* if post is an image, it should be displayed; if not, render nothing: */}
+                    {body.data.post_hint === "image" ? 
+                        <img src={body.data.url}/>
+                    : ""}
+
+
                     {/* Post score: */}
                     <div className="postScore">
                         <p>Score: {body.data.score}</p>        

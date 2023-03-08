@@ -11,47 +11,10 @@ import "./feedCard.css";
 
 
 export const FeedCard = (post, key) => {
-    let postThumbnail = post.data.thumbnail;
-    if (!postThumbnail.includes("https")) {
-        postThumbnail = logo;
-    }
-
-    // post itself: 
-    return (
-        <div className="feedCard" key={key}>
-            <article>
-                <Link to={"/r/" + post.data.subreddit}>
-                    <div className="postOrigin">
-                        <p>Posted in {post.data.subreddit_name_prefixed} by {post.data.author} at "time"</p>
-                    </div>
-                </Link>
-
-                <div className="postHeading">
-                    <h3>{post.data.title}</h3>
-                    <p>{post.data.num_comments} Comments</p>
-                </div>
-
-                <div className="postThumbnail">
-                    <img className="thumbnailImage" src={postThumbnail} />
-                </div>
-                
-                <div className="postScore">
-                    <p>Score: {post.data.score}</p>        
-                </div>                
-            </article>
-        </div>
-    );
-};
-
-export default FeedCard;
-
-
-/* 
-
-    // date and time of post:
+    // gets date and time of post, then converts it to a more readable form:
     const dataCreated = new Date(post.data.created_utc*1000);
     const postedWhen = dataCreated.toLocaleString(
-        "en=GB",
+        "en-GB",
         {
             hour12: true,
             weekday: "short",
@@ -63,6 +26,52 @@ export default FeedCard;
         }
     );
 
+    // uses the scraped thumbnail if available, or the reddit logo for posts without one set:
+    let postThumbnail = post.data.thumbnail;
+    if (!postThumbnail.includes("https")) {
+        postThumbnail = logo;
+    };
+
+    // post preview itself: 
+    return (
+        <div className="feedCard" key={key}>
+            
+            <article>
+                {/* Posted by/in details: */}
+                <Link to={"/r/" + post.data.subreddit}>
+                    <div className="postOrigin">
+                        <p>Posted in {post.data.subreddit_name_prefixed} by {post.data.author} at {postedWhen}</p>
+                    </div>
+                </Link>
+
+                <Link to={post.data.permalink}>
+                    {/* Post title and comments total: */}
+                    <div className="postHeading">
+                        <h3>{post.data.title}</h3>
+                        <p>{post.data.num_comments} Comments</p>
+                    </div>
+
+                    {/* Post thumbnail: */}
+                    <div className="postThumbnail">
+                        <img className="thumbnailImage" src={postThumbnail} />
+                    </div>
+                    
+                    {/* Post score: */}
+                    <div className="postScore">
+                        <p>Score: {post.data.score}</p>        
+                    </div>
+                </Link>                
+            </article>
+        </div>
+    );
+};
+
+export default FeedCard;
+
+
+/* 
+
+    
 
 
 

@@ -49,3 +49,5 @@ export const getComments = state => state.post.post.comments;
 export const getPostBody = state => state.post.postBody;
 export const isLoadingPost = state => state.post.isLoadingPost;
 export const failedLoadingPost = state => state.post.failedLoadingPost;
+
+export default postSlice.reducer;

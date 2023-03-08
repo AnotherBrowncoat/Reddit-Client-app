@@ -5,6 +5,8 @@ import logo from './logo.svg';
 
 // my elements
 import Feed from './pages/Feed/Feed.js';
+import Post from './pages/Post/Post.js';
+import { PostBody } from './components/postBody.js/postBody.js';
 
 // styling
 import './App.css';
@@ -22,6 +24,7 @@ function App() {
         <main className="App-main">
           <Routes>
             <Route path="/" element={<Feed />} />
+            <Route path="/r/:subreddit/comments/:id/:postLink" element={<Post />} />
           </Routes>
         </main>
       </div>

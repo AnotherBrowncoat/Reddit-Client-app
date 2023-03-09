@@ -8,6 +8,8 @@ import logo from "../../logo.svg";
 
 // styling imports:
 import "./feedCard.css"; 
+import { FaCommentAlt } from "react-icons/fa";
+import { CgArrowsV } from "react-icons/cg";
 
 
 export const FeedCard = (post, key) => {
@@ -50,7 +52,10 @@ export const FeedCard = (post, key) => {
                         <h3>
                             {post.data.title}{post.data.thumbnail === "nsfw" ? <span className="nsfw">nsfw</span> : ""}
                         </h3>
-                        <p>{post.data.num_comments} Comments</p>
+
+                        <div className="commentsDiv">
+                            <FaCommentAlt className="commentsIcon"/><p>{post.data.num_comments} Comments</p>
+                        </div>
                     </div>
 
                     {/* Post thumbnail: */}
@@ -69,7 +74,7 @@ export const FeedCard = (post, key) => {
                     
                     {/* Post score: */}
                     <div className="postScore">
-                        <p>Score: {post.data.score}</p>        
+                        <CgArrowsV className="scoreIcon"/><p>Score: {post.data.score}</p>        
                     </div>
                 </Link>                
             </article>

@@ -10,6 +10,8 @@ import { PostBody } from './components/postBody.js/postBody.js';
 
 // styling
 import './App.css';
+import { IoHome } from "react-icons/io5";
+import { SiReddit } from "react-icons/si";
 
 
 function App() {
@@ -18,7 +20,10 @@ function App() {
       <div className="App">
 
         <header className="App-header">
-          <h2>Hello there</h2>
+          <h1>
+            <Link to="/"><IoHome className="homeIcon"/> Home</Link>
+          </h1>
+          <h3 className="subRedditsHeading"><SiReddit /> Subreddits</h3>
         </header>
 
         <main className="App-main">

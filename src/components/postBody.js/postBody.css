@@ -1,0 +1,8 @@
+.postImage {
+    max-width: 80%;
+    background-size: contain;
+}
+
+.postVideo {
+    max-width: 80%;
+}

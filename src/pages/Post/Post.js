@@ -12,6 +12,7 @@ import { getPost,
 
 // my components imports:
 import { PostBody } from "../../components/postBody.js/postBody.js";
+import { PostComment } from "../../components/postComment/postComment.js";
 
 // styling imports: 
 import './Post.css';
@@ -49,9 +50,21 @@ export const Post = () => {
 
     if(postBody !== undefined) {
         return (
-            <div className="post">
-                <h2>Hello indeed</h2>
-                <PostBody data={postBody.children[0].data} />
+            <div className="postWrapper">
+                
+                {/* post content: */}
+                <div className="postBody">
+                    <h2>Hello indeed</h2>
+                    <PostBody data={postBody.children[0].data} />
+                </div>
+
+                {/* comments on this post: */}
+                <div className="commentSection">
+                    <p>This is the comments section</p>
+                    {userComments.children.map((comment, index) => {
+                        <PostComment data={comment.data} key={index} />
+                    })}  
+                </div>      
             </div>
         )
     }

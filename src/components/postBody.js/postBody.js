@@ -10,6 +10,8 @@ import remarkGfm from "remark-gfm";
 
 // styling imports:
 import './postBody.css'
+import { FaCommentAlt } from "react-icons/fa";
+import { CgArrowsV } from "react-icons/cg";
 
 
 export const PostBody = (body) => {
@@ -50,7 +52,7 @@ export const PostBody = (body) => {
                         <h3>
                             {body.data.title}{body.data.thumbnail === "nsfw" ? <span className="nsfw">nsfw</span> : ""}
                         </h3>
-                        <p>{body.data.num_comments} Comments</p>
+                        <FaCommentAlt /><p>{body.data.num_comments} Comments</p>
                     </div>
 
                     {/* if post is just text, it should render as text; if not, render nothing: */}
@@ -73,25 +75,24 @@ export const PostBody = (body) => {
 
                     {/* if post is a video, it should be playable and have controls; if not, render nothing: */}
                     {body.data.is_video ?
-                        <video controls >
+                        <video className="postVideo" controls >
                             <source src={body.data.media.reddit_video.fallback_url} type={"video/mp4"}/>
                         </video> : ""}
                     
                     
                     {/* if post is an image, it should be displayed; if not, render nothing: */}
                     {body.data.post_hint === "image" ? 
-                        <img src={body.data.url}/>
+                        <img className="postImage" src={body.data.url} alt={body.data.title}/>
                     : ""}
 
 
                     {/* Post score: */}
                     <div className="postScore">
-                        <p>Score: {body.data.score}</p>        
+                        <CgArrowsV /><p>Score: {body.data.score}</p>        
                     </div>
                 </Link>  
             </article>
 
         </div>
     )
-
 };

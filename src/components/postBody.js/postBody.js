@@ -61,7 +61,7 @@ export const PostBody = (body) => {
                             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                 {body.data.selftext}
                             </ReactMarkdown>
-                        </p> : ""}
+                        </p> : null }
 
 
                     {/* if post is a link, it should render the link; if not, render nothing: */}
@@ -71,19 +71,19 @@ export const PostBody = (body) => {
                                 {body.data.url}
                             </a>
                         </p>
-                    : ""}
+                    : null }
 
                     {/* if post is a video, it should be playable and have controls; if not, render nothing: */}
                     {body.data.is_video ?
                         <video className="postVideo" controls >
                             <source src={body.data.media.reddit_video.fallback_url} type={"video/mp4"}/>
-                        </video> : ""}
+                        </video> : null }
                     
                     
                     {/* if post is an image, it should be displayed; if not, render nothing: */}
                     {body.data.post_hint === "image" ? 
                         <img className="postImage" src={body.data.url} alt={body.data.title}/>
-                    : ""}
+                    : null }
 
 
                     {/* Post score: */}

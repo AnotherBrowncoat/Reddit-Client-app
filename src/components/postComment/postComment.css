@@ -1,0 +1,15 @@
+.comments {
+    border: 4px solid #6a6a6a;
+    border-radius: 3px;
+    text-align: left;
+    padding: 0.5em 0.5em;
+    margin-top: 5px;
+}
+
+.comments #OP {
+    color: #04c9ff;
+}
+
+p.commentHeader {
+    margin: auto;
+}

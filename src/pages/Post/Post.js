@@ -61,9 +61,11 @@ export const Post = () => {
                 {/* comments on this post: */}
                 <div className="commentSection">
                     <p>This is the comments section</p>
-                    {userComments.children.map((comment, index) => {
-                        <PostComment data={comment.data} key={index} />
-                    })}  
+                    {userComments.children.map((comment, index) => (
+                        <PostComment 
+                            data={comment.data} key={index} 
+                        />
+                    ))}  
                 </div>      
             </div>
         )

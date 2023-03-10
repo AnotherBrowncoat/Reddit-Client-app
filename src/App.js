@@ -7,6 +7,8 @@ import logo from './logo.svg';
 import Feed from './pages/Feed/Feed.js';
 import Post from './pages/Post/Post.js';
 import { PostBody } from './components/postBody.js/postBody.js';
+import SearchBar from './features/searchBar/searchBar.js';
+import SubReddits from './features/subReddits/subReddits';
 
 // styling
 import './App.css';
@@ -23,12 +25,18 @@ function App() {
           <h1>
             <Link to="/"><IoHome className="homeIcon"/> Home</Link>
           </h1>
-          <h3 className="subRedditsHeading"><SiReddit /> Subreddits</h3>
+          <SearchBar />
         </header>
+
+        <aside>
+          <h3 className="subRedditsHeading"><SiReddit /> Subreddits</h3>
+          <SubReddits />
+        </aside>
 
         <main className="App-main">
           <Routes>
             <Route path="/" element={<Feed />} />
+            <Route path="/r/:subreddit" element={<Feed />} />
             <Route path="/r/:subreddit/comments/:id/:postLink" element={<Post />} />
           </Routes>
         </main>
